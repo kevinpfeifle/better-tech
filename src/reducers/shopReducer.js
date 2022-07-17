@@ -38,8 +38,9 @@ const shopReducer = (state = initState, action) => {
             cart = {...state.cart};
             if (action.payload != null) {
                 // If item is in the cart, add on the new amount, else had the new amount from 0.
-                if (cart.hasOwnProperty(action.payload.itemId)) cart[action.payload.itemId] = cart[action.payload.itemId] + action.payload.itemCount;
-                else cart[action.payload.itemId] = action.payload.itemCount;
+                if (cart.items.hasOwnProperty(action.payload.itemId)) cart.items[action.payload.itemId] = cart.items[action.payload.itemId] + action.payload.itemCount;
+                else cart.items[action.payload.itemId] = action.payload.itemCount;
+                cart.totalCount += action.payload.itemCount;
             }
             return { ...state, cart: cart, loading: false }; 
         case actions.CART_ADD_ITEM_FAILURE:
@@ -51,14 +52,24 @@ const shopReducer = (state = initState, action) => {
             cart = {...state.cart};
             if (action.payload != null) {
                 // If item is in the cart, remove the amount, if it would be 0, remove it from the cart.
-                if (cart.hasOwnProperty(action.payload.itemId)) {
-                    // If remove count is -1, we want to completely remove ALL of the item.
-                    if (action.payload.itemCount === -1) delete cart[action.payload.itemId];
+                if (cart.items.hasOwnProperty(action.payload.itemId)) {
+                    if (action.payload.itemCount === -1) {
+                        // If remove count is -1, we want to completely remove ALL of the item.
+                        cart.totalCount -= cart.items[action.payload.itemId];
+                        delete cart.items[action.payload.itemId];
+                    }
                     else {
-                        let count = cart[action.payload.itemId];
+                        let count = cart.items[action.payload.itemId];
                         count -= action.payload.itemCount;
-                        if (count <= 0) delete cart[action.payload.itemId];
-                        else cart[action.payload.itemId] = count;
+                        if (count <= 0)  {
+                            cart.totalCount -= cart.items[action.payload.itemId];
+                            delete cart.items[action.payload.itemId];
+                        }
+                        else {
+                            cart.totalCount -= action.payload.itemCount;
+                            cart.items[action.payload.itemId] = count;
+                        }
+                            
                     }
                 }
             }
