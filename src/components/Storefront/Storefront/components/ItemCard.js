@@ -1,6 +1,7 @@
 import Card from 'react-bootstrap/Card';
 
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -9,15 +10,26 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import ImageCarousel from '../../../ImageCarousel';
+import { addItemToCart } from '../../../../actions/shopActions';
 
 /*
     ISSUE! Text overlaps the checkout buttons. This needs to be fixed!
 */
-const ItemCard = ({itemImgs, itemTitle, itemPrice, itemDescription='', itemMFG, itemShipPrice='Free shipping'}) => {
+const ItemCard = ({itemId, itemImgs, itemTitle, itemPrice, itemDescription='', itemMFG, itemShipPrice='Free shipping'}) => {
     const [visible, setVisible] = useState(false);
 
     const handleClose = () => setVisible(false);
     const handleShow = () => setVisible(true);
+
+    const addToCart = (itemId, itemCount=1) => {
+        let item = {
+            itemId: itemId,
+            itemCount: itemCount
+        }
+        dispatch(addItemToCart(item));
+    };
+
+    const dispatch = useDispatch();
 
     return (
         <div style={{width: '100%'}}>
@@ -26,11 +38,11 @@ const ItemCard = ({itemImgs, itemTitle, itemPrice, itemDescription='', itemMFG, 
                 <Card.Img variant="top" src={itemImgs[0]} style={{ height: '10rem', width: '100%', transform: 'translateZ(0)', objectFit: 'contain'}} />
                 <Card.Body className='bg-light'>
                     <Card.Title>{itemTitle}</Card.Title>
-                    <Card.Text className='text-start'>
+                    <div className='text-start'>
                         <p className='m-0 fw-bold'>{itemPrice}</p>
                         <p className='m-0 fw-lighter'>{itemMFG}</p>
                         <p className='m-0 fw-lighter fst-italic'>{itemShipPrice}</p>
-                    </Card.Text>
+                    </div>
                 </Card.Body>
             </Card>
 
@@ -50,7 +62,7 @@ const ItemCard = ({itemImgs, itemTitle, itemPrice, itemDescription='', itemMFG, 
                     </div>
 
                     <Stack direction='horizontal' gap={3} className='align-items-center justify-content-center fixed-bottom p-3 bg-white'>
-                        <Button variant="dark" size='lg' style={{width:'10rem'}}>Add to Cart</Button>
+                        <Button variant="dark" size='lg' style={{width:'10rem'}} onClick={() => addToCart(itemId)}>Add to Cart</Button>
                         <Button variant="dark" size='lg' style={{width:'10rem'}} disabled>Checkout</Button>
                     </Stack>
                 </Modal.Body>

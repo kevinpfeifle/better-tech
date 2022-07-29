@@ -7,7 +7,7 @@ const ImageCarousel = ({images, interval}) => {
             <Carousel controls={true} interval={interval} variant='dark'>
                 {
                     images.map((img) => (
-                        <Carousel.Item>
+                        <Carousel.Item key={img}>
                             <Image fluid={true} src={img} style={{aspectRatio: '1/1', transform: 'translateZ(0)', objectFit: 'cover', width:'100%'}}></Image>
                         </Carousel.Item>
                     ))
