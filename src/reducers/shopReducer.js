@@ -37,9 +37,16 @@ const shopReducer = (state = initState, action) => {
         case actions.CART_ADD_ITEM_SUCCESS:
             cart = {...state.cart};
             if (action.payload != null) {
-                // If item is in the cart, add on the new amount, else had the new amount from 0.
-                if (cart.items.hasOwnProperty(action.payload.itemId)) cart.items[action.payload.itemId] = cart.items[action.payload.itemId] + action.payload.itemCount;
-                else cart.items[action.payload.itemId] = action.payload.itemCount;
+                // If item is in the cart, add on the new amount, else add the new amount from 0 and set the details.
+                if (cart.items.hasOwnProperty(action.payload.itemId)) cart.items[action.payload.itemId].count += action.payload.itemCount;
+                else {
+                    cart.items[action.payload.itemId] = {
+                        name: action.payload.itemName,
+                        count: action.payload.itemCount,
+                        image: action.payload.itemImage,
+                        price: action.payload.itemPrice
+                    };
+                }
                 cart.totalCount += action.payload.itemCount;
             }
             return { ...state, cart: cart, loading: false }; 
@@ -59,15 +66,15 @@ const shopReducer = (state = initState, action) => {
                         delete cart.items[action.payload.itemId];
                     }
                     else {
-                        let count = cart.items[action.payload.itemId];
+                        let count = cart.items[action.payload.itemId].count;
                         count -= action.payload.itemCount;
                         if (count <= 0)  {
-                            cart.totalCount -= cart.items[action.payload.itemId];
+                            cart.totalCount -= cart.items[action.payload.itemId].count;
                             delete cart.items[action.payload.itemId];
                         }
                         else {
                             cart.totalCount -= action.payload.itemCount;
-                            cart.items[action.payload.itemId] = count;
+                            cart.items[action.payload.itemId].count = count;
                         }
                             
                     }
