@@ -10,7 +10,7 @@ const StoreNavbar = ({storeName}) => {
             <Stack direction="horizontal" gap={3}>
                 <NavLink to='/' style={{textDecoration:'none', color:'black'}}><AiOutlineArrowLeft className="m-2" style={{fontSize: '2rem'}} /></NavLink>
                 <p className="m-2 ms-auto fw-bold">{storeName}</p>
-                <AiOutlineShopping className="m-2 ms-auto" style={{fontSize: '2rem'}} />
+                <NavLink to='/cart' className="m-2 ms-auto"  style={{textDecoration:'none', color:'black'}}><AiOutlineShopping style={{fontSize: '2rem'}} /></NavLink>
             </Stack>
         </div>
     );

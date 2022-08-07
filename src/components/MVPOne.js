@@ -12,7 +12,7 @@ import ImageModal from './ImageModal';
 import TipJar from './TipJar';
 import { NavLink } from 'react-router-dom'
 import ReactPlayer from 'react-player'
-import ProgressBar from './ProgressBar';
+// import ProgressBar from './ProgressBar';
 
 // Opacity/blur on the background whenever a modal is already open -- ImageModel does it already! :D
 // Store items will popups and not pages.

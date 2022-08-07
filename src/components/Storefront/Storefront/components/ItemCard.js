@@ -21,10 +21,13 @@ const ItemCard = ({itemId, itemImgs, itemTitle, itemPrice, itemDescription='', i
     const handleClose = () => setVisible(false);
     const handleShow = () => setVisible(true);
 
-    const addToCart = (itemId, itemCount=1) => {
+    const addToCart = (itemCount=1) => {
         let item = {
             itemId: itemId,
-            itemCount: itemCount
+            itemCount: itemCount,
+            itemName: itemTitle,
+            itemImage: itemImgs[0],
+            itemPrice: itemPrice
         }
         dispatch(addItemToCart(item));
     };
@@ -62,7 +65,7 @@ const ItemCard = ({itemId, itemImgs, itemTitle, itemPrice, itemDescription='', i
                     </div>
 
                     <Stack direction='horizontal' gap={3} className='align-items-center justify-content-center fixed-bottom p-3 bg-white'>
-                        <Button variant="dark" size='lg' style={{width:'10rem'}} onClick={() => addToCart(itemId)}>Add to Cart</Button>
+                        <Button variant="dark" size='lg' style={{width:'10rem'}} onClick={() => addToCart()}>Add to Cart</Button>
                         <Button variant="dark" size='lg' style={{width:'10rem'}} disabled>Checkout</Button>
                     </Stack>
                 </Modal.Body>
