@@ -19,16 +19,16 @@ const Storefront = () => {
             <StoreNavbar storeName={'Beauty Products'}></StoreNavbar>
             <Stack gap={2} className='m-3' style={{position: 'relative', zIndex: 1}}>
                 <Stack direction='horizontal' gap={2}>
-                    <ItemCard itemId='1' itemImgs={images} itemTitle='Product' itemPrice='$35.00' itemMFG='Company' itemDescription='A product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundable.'></ItemCard>
-                    <ItemCard itemId='2' itemImgs={[images[1]]} itemTitle='Hairbrush' itemPrice='$15.00' itemMFG='Wet' itemDescription='The best hairbrush we have ever seen, we swear.'></ItemCard>
+                    <ItemCard itemId='1' itemImgs={images} itemTitle='Product' itemPrice={35.00} itemMFG='Company' itemDescription='A product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundable. TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST'></ItemCard>
+                    <ItemCard itemId='2' itemImgs={[images[1]]} itemTitle='Hairbrush' itemPrice={15.00} itemMFG='Wet' itemDescription='The best hairbrush we have ever seen, we swear.'></ItemCard>
                 </Stack>
                 <Stack direction='horizontal' gap={2}>
-                    <ItemCard itemId='3' itemImgs={[images[2]]} itemTitle='Hairspray' itemPrice='$20.00'itemMFG='TRESemme' itemDescription='Some spray for your hair.'></ItemCard>
-                    <ItemCard itemId='4' itemImgs={[images[3]]} itemTitle='Shampoo' itemPrice='$30.00' itemMFG='TRESemme' itemDescription='Hair care product. Definetly not the poo of a dog named Sham.'></ItemCard>
+                    <ItemCard itemId='3' itemImgs={[images[2]]} itemTitle='Hairspray' itemPrice={20.00} itemMFG='TRESemme' itemDescription='Some spray for your hair.'></ItemCard>
+                    <ItemCard itemId='4' itemImgs={[images[3]]} itemTitle='Shampoo' itemPrice={30.00} itemMFG='TRESemme' itemDescription='Hair care product. Definetly not the poo of a dog named Sham.'></ItemCard>
                 </Stack>
                 <Stack direction='horizontal' gap={2}>
-                    <ItemCard itemId='5' itemImgs={[images[1]]} itemTitle='Hairbrush' itemPrice='$15.00' itemMFG='Wet' itemDescription='It is an okay hairbrush. Honestly, we would buy the first one.'></ItemCard>
-                    <ItemCard itemId='6' itemImgs={[images[0]]} itemTitle='Conditioner' itemPrice='$35.00' itemMFG='TRESemme' itemDescription='It is just fancier shampoo; it came from a purebred, unlike Sham. Who said that? Certainly not us.'></ItemCard>
+                    <ItemCard itemId='5' itemImgs={[images[1]]} itemTitle='Hairbrush' itemPrice={15.00} itemMFG='Wet' itemDescription='It is an okay hairbrush. Honestly, we would buy the first one.'></ItemCard>
+                    <ItemCard itemId='6' itemImgs={[images[0]]} itemTitle='Conditioner' itemPrice={35.00} itemMFG='TRESemme' itemDescription='It is just fancier shampoo; it came from a purebred, unlike Sham. Who said that? Certainly not us.'></ItemCard>
                 </Stack>
             </Stack>
         </div>

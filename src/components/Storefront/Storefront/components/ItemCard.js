@@ -42,7 +42,7 @@ const ItemCard = ({itemId, itemImgs, itemTitle, itemPrice, itemDescription='', i
                 <Card.Body className='bg-light'>
                     <Card.Title>{itemTitle}</Card.Title>
                     <div className='text-start'>
-                        <p className='m-0 fw-bold'>{itemPrice}</p>
+                        <p className='m-0 fw-bold'>{'$' + itemPrice.toFixed(2)}</p>
                         <p className='m-0 fw-lighter'>{itemMFG}</p>
                         <p className='m-0 fw-lighter fst-italic'>{itemShipPrice}</p>
                     </div>
@@ -54,19 +54,21 @@ const ItemCard = ({itemId, itemImgs, itemTitle, itemPrice, itemDescription='', i
                 <Modal.Header closeButton>
                     <Modal.Title></Modal.Title>
                 </Modal.Header>
-                <Modal.Body className='m-0 p-0' style={{position: 'relative'}}>
-                    <ImageCarousel images={itemImgs}></ImageCarousel>
+                <Modal.Body className='m-0 p-0 mb-5' style={{position: 'relative'}}>
                     <div className='m-3'>
+                        <ImageCarousel images={itemImgs}></ImageCarousel>
+                    </div>
+                    <div className='m-3 mb-5'>
                         <h1>{itemTitle}</h1>
                         <h5>{itemMFG}</h5>
-                        <h5>{itemPrice}</h5>
+                        <h5>{'$' + itemPrice.toFixed(2)}</h5>
                         <p className='fw-lighter fst-italic'>{itemShipPrice}</p>
                         <p>{itemDescription}</p>
                     </div>
 
                     <Stack direction='horizontal' gap={3} className='align-items-center justify-content-center fixed-bottom p-3 bg-white'>
                         <Button variant="dark" size='lg' style={{width:'10rem'}} onClick={() => addToCart()}>Add to Cart</Button>
-                        <Button variant="dark" size='lg' style={{width:'10rem'}} disabled>Checkout</Button>
+                        <Button variant="dark" size='lg' style={{width:'10rem'}} disabled>Buy Now</Button>
                     </Stack>
                 </Modal.Body>
             </Modal>

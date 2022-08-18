@@ -17,6 +17,7 @@ import * as actions from '../actions/shopActions'
 const initState = {
     cart: {
         totalCount: 0,
+        subTotal: 0,
         items: {}
     },
     loading: false
@@ -38,7 +39,10 @@ const shopReducer = (state = initState, action) => {
             cart = {...state.cart};
             if (action.payload != null) {
                 // If item is in the cart, add on the new amount, else add the new amount from 0 and set the details.
-                if (cart.items.hasOwnProperty(action.payload.itemId)) cart.items[action.payload.itemId].count += action.payload.itemCount;
+                if (cart.items.hasOwnProperty(action.payload.itemId)) {
+                    cart.items[action.payload.itemId].count += action.payload.itemCount;
+                    cart.subTotal += action.payload.itemCount * cart.items[action.payload.itemId].price;
+                }
                 else {
                     cart.items[action.payload.itemId] = {
                         name: action.payload.itemName,
@@ -46,8 +50,10 @@ const shopReducer = (state = initState, action) => {
                         image: action.payload.itemImage,
                         price: action.payload.itemPrice
                     };
+                    cart.subTotal += action.payload.itemPrice
                 }
                 cart.totalCount += action.payload.itemCount;
+                
             }
             return { ...state, cart: cart, loading: false }; 
         case actions.CART_ADD_ITEM_FAILURE:
@@ -62,7 +68,8 @@ const shopReducer = (state = initState, action) => {
                 if (cart.items.hasOwnProperty(action.payload.itemId)) {
                     if (action.payload.itemCount === -1) {
                         // If remove count is -1, we want to completely remove ALL of the item.
-                        cart.totalCount -= cart.items[action.payload.itemId];
+                        cart.totalCount -= cart.items[action.payload.itemId].count;
+                        cart.subTotal -= cart.items[action.payload.itemId].price * cart.items[action.payload.itemId].count;
                         delete cart.items[action.payload.itemId];
                     }
                     else {
@@ -70,10 +77,12 @@ const shopReducer = (state = initState, action) => {
                         count -= action.payload.itemCount;
                         if (count <= 0)  {
                             cart.totalCount -= cart.items[action.payload.itemId].count;
+                            cart.subTotal -= cart.items[action.payload.itemId].price * cart.items[action.payload.itemId].count;
                             delete cart.items[action.payload.itemId];
                         }
                         else {
                             cart.totalCount -= action.payload.itemCount;
+                            cart.subTotal -= action.payload.itemCount * cart.items[action.payload.itemId].price;
                             cart.items[action.payload.itemId].count = count;
                         }
                             
