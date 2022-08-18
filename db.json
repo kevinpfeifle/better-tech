@@ -1,0 +1,68 @@
+{
+    "products": [
+        {
+            "product_id": 1,
+            "product_name": "Test Product",
+            "product_mfg": "Test Company",
+            "product_price": 35.00,
+            "product_description": "A product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundableA product for you to purchase, we promise you will love it. Warning: Non-refundable. TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST",
+            "product_images": [
+                "store/conditioner.png",
+                "store/hairbrush.png",
+                "store/hairspray.png",
+                "store/shampoo.png",
+                "salon1.jpeg"
+            ]        
+        },
+        {
+            "product_id": 2,
+            "product_name": "Hairbrush",
+            "product_mfg": "Wet",
+            "product_price": 15.00,
+            "product_description": "The best hairbrush we have ever seen, we swear.",
+            "product_images": [
+                "store/hairbrush.png"
+            ]        
+        },
+        {
+            "product_id": 3,
+            "product_name": "Hairspray",
+            "product_mfg": "TRESemme",
+            "product_price": 20.00,
+            "product_description": "Some spray for your hair.",
+            "product_images": [
+                "store/hairspray.png"
+            ]        
+        },
+        {
+            "product_id": 4,
+            "product_name": "Shampoo",
+            "product_mfg": "TRESemme",
+            "product_price": 30.00,
+            "product_description": "Hair care product. Definetly not the poo of a dog named Sham.",
+            "product_images": [
+                "store/shampoo.png"
+            ]        
+        },
+        {
+            "product_id": 5,
+            "product_name": "Hairbrush 2: Electric Boogaloo",
+            "product_mfg": "Wet",
+            "product_price": 5.00,
+            "product_description": "It is an okay hairbrush. Honestly, we would buy the first one.",
+            "product_images": [
+                "store/hairbrush.png"
+            ]        
+        },
+        {
+            "product_id": 6,
+            "product_name": "Conditioner",
+            "product_mfg": "TRESemme",
+            "product_price": 35.00,
+            "product_description": "It is just fancier shampoo; it came from a purebred, unlike Sham. Who said that? Certainly not us.",
+            "product_images": [
+                "store/conditioner.png"
+            ]        
+        }
+    ]
+}
