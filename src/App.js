@@ -5,6 +5,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import MVPOne from './components/MVPOne';
 import Storefront from './components/Storefront/Storefront/Storefront';
 import ShoppingCart from './components/Storefront/ShoppingCart/ShoppingCart';
+import ProductPage from './components/Storefront/ProductPage/ProductPage';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
                     <Routes>
                         <Route path='/' element={<MVPOne />} />
                         <Route path='/storefront' element={<Storefront />} />
+                        <Route path='/storefront/products/:id' element={<ProductPage />} />
                         <Route path='/cart' element={<ShoppingCart />} />
                         {/* <Route render={() => <RouteNotFound />} /> Catch all route for invalid URL paths, has a link to the home route. */}
                         {/* <Route path='/' render={() => <UnderConstruction />} /> */}

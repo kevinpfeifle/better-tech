@@ -12,14 +12,16 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import ImageCarousel from '../../../ImageCarousel';
 import { addItemToCart } from '../../../../actions/shopActions';
 
+import { useNavigate } from "react-router-dom";
 /*
     ISSUE! Text overlaps the checkout buttons. This needs to be fixed!
 */
 const ItemCard = ({itemId, itemImgs, itemTitle, itemPrice, itemDescription='', itemMFG, itemShipPrice='Free shipping'}) => {
+    let navigate = useNavigate();    
     const [visible, setVisible] = useState(false);
 
     const handleClose = () => setVisible(false);
-    const handleShow = () => setVisible(true);
+    const handleShow = () => navigate("/storefront/products/1");
 
     const addToCart = (itemCount=1) => {
         let item = {
